@@ -1,3 +1,4 @@
 {
-    "cortex-debug.gdbPath": "arm-none-eabi-gdb"
+    "cortex-debug.gdbPath": "arm-none-eabi-gdb",
+    "makefile.configureOnOpen": true
 }

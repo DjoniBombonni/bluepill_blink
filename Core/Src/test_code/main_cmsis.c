@@ -2,7 +2,7 @@
 //#include "../../../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
 
 int main(void) {
-    uint32_t delay = 200000;
+   volatile uint32_t delay = 200000;
 
     RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
 
