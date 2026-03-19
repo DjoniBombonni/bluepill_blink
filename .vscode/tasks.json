@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build",
+            "label": "BUILD",
             "type": "shell",
             "group": {
                 "kind": "build",
@@ -15,7 +15,7 @@
             "detail": "Build project"
         },
         {
-            "label": "Clean",
+            "label": "CLEAN",
             "type": "shell",
             "group": "build",
             "command": "make clean",
@@ -24,7 +24,7 @@
         },
         {
             "type": "shell",
-            "label": "Flash",
+            "label": "FLASH",
             "command": "st-flash",
             "args": [
               "--reset",
@@ -44,7 +44,7 @@
           },
         {
             "type": "shell",
-            "label": "Erase",
+            "label": "ERASE",
             "command": "st-flash",
             "args": [
               "--connect-under-reset",

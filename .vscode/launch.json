@@ -13,7 +13,7 @@
             "type": "cortex-debug",
             "runToEntryPoint": "main",
             "servertype": "stutil",
-            "preLaunchTask" : "Build",
+            "preLaunchTask" : "BUILD",
             "preRestartCommands" : [ "load", "enable breakpoint", "monitor reset" ],
             "showDevDebugOutput" : "raw",
             "svdFile" : "${workspaceRoot}/STM32F0x1.svd"

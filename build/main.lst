@@ -1,0 +1,533 @@
+ARM GAS  /tmp/cc7wJfbo.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "Core/Src/main.c"
+  18              		.section	.text.Delay,"ax",%progbits
+  19              		.align	1
+  20              		.global	Delay
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	Delay:
+  26              	.LVL0:
+  27              	.LFB65:
+   1:Core/Src/main.c **** #include "../../../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+   2:Core/Src/main.c **** 
+   3:Core/Src/main.c **** /**
+   4:Core/Src/main.c ****  * @brief  Задержка
+   5:Core/Src/main.c ****  */
+   6:Core/Src/main.c **** void Delay(volatile uint32_t count)
+   7:Core/Src/main.c **** {
+  28              		.loc 1 7 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              		.loc 1 7 1 is_stmt 0 view .LVU1
+  34 0000 82B0     		sub	sp, sp, #8
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37 0002 0190     		str	r0, [sp, #4]
+   8:Core/Src/main.c ****     while (count--) { __NOP(); }
+  38              		.loc 1 8 5 is_stmt 1 view .LVU2
+  39              		.loc 1 8 11 is_stmt 0 view .LVU3
+  40 0004 00E0     		b	.L2
+  41              	.L3:
+  42              		.loc 1 8 23 is_stmt 1 discriminator 2 view .LVU4
+  43              		.syntax unified
+  44              	@ 8 "Core/Src/main.c" 1
+  45 0006 00BF     		nop
+  46              	@ 0 "" 2
+  47              		.thumb
+  48              		.syntax unified
+  49              	.L2:
+  50              		.loc 1 8 12 discriminator 1 view .LVU5
+ARM GAS  /tmp/cc7wJfbo.s 			page 2
+
+
+  51              		.loc 1 8 17 is_stmt 0 discriminator 1 view .LVU6
+  52 0008 019B     		ldr	r3, [sp, #4]
+  53 000a 5A1E     		subs	r2, r3, #1
+  54 000c 0192     		str	r2, [sp, #4]
+  55              		.loc 1 8 12 discriminator 1 view .LVU7
+  56 000e 002B     		cmp	r3, #0
+  57 0010 F9D1     		bne	.L3
+   9:Core/Src/main.c **** }
+  58              		.loc 1 9 1 view .LVU8
+  59 0012 02B0     		add	sp, sp, #8
+  60              	.LCFI1:
+  61              		.cfi_def_cfa_offset 0
+  62              		@ sp needed
+  63 0014 7047     		bx	lr
+  64              		.cfi_endproc
+  65              	.LFE65:
+  67              		.section	.text.GPIO_Init,"ax",%progbits
+  68              		.align	1
+  69              		.global	GPIO_Init
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  74              	GPIO_Init:
+  75              	.LFB66:
+  10:Core/Src/main.c **** 
+  11:Core/Src/main.c **** /**
+  12:Core/Src/main.c ****  * @brief  Инициализация GPIO
+  13:Core/Src/main.c ****  * @note   Кнопка подключена к GND (один вывод на PA0, другой н�
+  14:Core/Src/main.c ****  *         Используем внутренний pull-up резистор
+  15:Core/Src/main.c ****  */
+  16:Core/Src/main.c **** void GPIO_Init(void)
+  17:Core/Src/main.c **** {
+  76              		.loc 1 17 1 is_stmt 1 view -0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		@ link register save eliminated.
+  18:Core/Src/main.c ****     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+  81              		.loc 1 18 5 view .LVU10
+  82              		.loc 1 18 8 is_stmt 0 view .LVU11
+  83 0000 154B     		ldr	r3, .L6
+  84 0002 9A69     		ldr	r2, [r3, #24]
+  85              		.loc 1 18 18 view .LVU12
+  86 0004 42F00402 		orr	r2, r2, #4
+  87 0008 9A61     		str	r2, [r3, #24]
+  19:Core/Src/main.c ****     RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+  88              		.loc 1 19 5 is_stmt 1 view .LVU13
+  89              		.loc 1 19 8 is_stmt 0 view .LVU14
+  90 000a 9A69     		ldr	r2, [r3, #24]
+  91              		.loc 1 19 18 view .LVU15
+  92 000c 42F00802 		orr	r2, r2, #8
+  93 0010 9A61     		str	r2, [r3, #24]
+  20:Core/Src/main.c **** 
+  21:Core/Src/main.c ****     /* PB2 - выход для светодиода */
+  22:Core/Src/main.c ****     GPIOB->CRL &= ~GPIO_CRL_MODE2;
+  94              		.loc 1 22 5 is_stmt 1 view .LVU16
+  95              		.loc 1 22 10 is_stmt 0 view .LVU17
+ARM GAS  /tmp/cc7wJfbo.s 			page 3
+
+
+  96 0012 A3F58233 		sub	r3, r3, #66560
+  97 0016 1A68     		ldr	r2, [r3]
+  98              		.loc 1 22 16 view .LVU18
+  99 0018 22F44072 		bic	r2, r2, #768
+ 100 001c 1A60     		str	r2, [r3]
+  23:Core/Src/main.c ****     GPIOB->CRL |= GPIO_CRL_MODE2_1;      /* 50 МГц */
+ 101              		.loc 1 23 5 is_stmt 1 view .LVU19
+ 102              		.loc 1 23 10 is_stmt 0 view .LVU20
+ 103 001e 1A68     		ldr	r2, [r3]
+ 104              		.loc 1 23 16 view .LVU21
+ 105 0020 42F40072 		orr	r2, r2, #512
+ 106 0024 1A60     		str	r2, [r3]
+  24:Core/Src/main.c ****     GPIOB->CRL &= ~GPIO_CRL_CNF2;        /* Push-pull */
+ 107              		.loc 1 24 5 is_stmt 1 view .LVU22
+ 108              		.loc 1 24 10 is_stmt 0 view .LVU23
+ 109 0026 1A68     		ldr	r2, [r3]
+ 110              		.loc 1 24 16 view .LVU24
+ 111 0028 22F44062 		bic	r2, r2, #3072
+ 112 002c 1A60     		str	r2, [r3]
+  25:Core/Src/main.c ****     GPIOB->BSRR = GPIO_BSRR_BR2;         /* LED выключен */
+ 113              		.loc 1 25 5 is_stmt 1 view .LVU25
+ 114              		.loc 1 25 17 is_stmt 0 view .LVU26
+ 115 002e 4FF48022 		mov	r2, #262144
+ 116 0032 1A61     		str	r2, [r3, #16]
+  26:Core/Src/main.c **** 
+  27:Core/Src/main.c ****     /* PA0 - вход с pull-up (кнопка на GND)
+  28:Core/Src/main.c ****      * CNF[1:0] = 10 - вход с pull-up/pull-down
+  29:Core/Src/main.c ****      * MODE[1:0] = 00 - вход
+  30:Core/Src/main.c ****      * ODR = 1 - включить pull-up
+  31:Core/Src/main.c ****      */
+  32:Core/Src/main.c ****     GPIOA->CRL &= ~GPIO_CRL_MODE0;       /* Вход */
+ 117              		.loc 1 32 5 is_stmt 1 view .LVU27
+ 118              		.loc 1 32 10 is_stmt 0 view .LVU28
+ 119 0034 A3F58063 		sub	r3, r3, #1024
+ 120 0038 1A68     		ldr	r2, [r3]
+ 121              		.loc 1 32 16 view .LVU29
+ 122 003a 22F00302 		bic	r2, r2, #3
+ 123 003e 1A60     		str	r2, [r3]
+  33:Core/Src/main.c ****     GPIOA->CRL &= ~GPIO_CRL_CNF0;        /* Очистка CNF */
+ 124              		.loc 1 33 5 is_stmt 1 view .LVU30
+ 125              		.loc 1 33 10 is_stmt 0 view .LVU31
+ 126 0040 1A68     		ldr	r2, [r3]
+ 127              		.loc 1 33 16 view .LVU32
+ 128 0042 22F00C02 		bic	r2, r2, #12
+ 129 0046 1A60     		str	r2, [r3]
+  34:Core/Src/main.c ****     GPIOA->CRL |= GPIO_CRL_CNF0_1;       /* CNF[1:0] = 10 - pull-up/pull-down */
+ 130              		.loc 1 34 5 is_stmt 1 view .LVU33
+ 131              		.loc 1 34 10 is_stmt 0 view .LVU34
+ 132 0048 1A68     		ldr	r2, [r3]
+ 133              		.loc 1 34 16 view .LVU35
+ 134 004a 42F00802 		orr	r2, r2, #8
+ 135 004e 1A60     		str	r2, [r3]
+  35:Core/Src/main.c ****     GPIOA->BSRR = GPIO_BSRR_BS0;         /* Включить pull-up (запись 1 в ODR) */
+ 136              		.loc 1 35 5 is_stmt 1 view .LVU36
+ 137              		.loc 1 35 17 is_stmt 0 view .LVU37
+ 138 0050 0122     		movs	r2, #1
+ 139 0052 1A61     		str	r2, [r3, #16]
+ARM GAS  /tmp/cc7wJfbo.s 			page 4
+
+
+  36:Core/Src/main.c **** }
+ 140              		.loc 1 36 1 view .LVU38
+ 141 0054 7047     		bx	lr
+ 142              	.L7:
+ 143 0056 00BF     		.align	2
+ 144              	.L6:
+ 145 0058 00100240 		.word	1073876992
+ 146              		.cfi_endproc
+ 147              	.LFE66:
+ 149              		.section	.text.Button_Read,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	Button_Read
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	Button_Read:
+ 157              	.LFB67:
+  37:Core/Src/main.c **** 
+  38:Core/Src/main.c **** /**
+  39:Core/Src/main.c ****  * @brief  Чтение кнопки
+  40:Core/Src/main.c ****  * @retval 0 - кнопка нажата (соединена с GND)
+  41:Core/Src/main.c ****  * @retval 1 - кнопка отпущена (pull-up тянет вверх)
+  42:Core/Src/main.c ****  */
+  43:Core/Src/main.c **** uint8_t Button_Read(void)
+  44:Core/Src/main.c **** {
+ 158              		.loc 1 44 1 is_stmt 1 view -0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+  45:Core/Src/main.c ****     return (GPIOA->IDR & GPIO_IDR_IDR0) ? 1 : 0;
+ 163              		.loc 1 45 5 view .LVU40
+ 164              		.loc 1 45 18 is_stmt 0 view .LVU41
+ 165 0000 024B     		ldr	r3, .L9
+ 166 0002 9868     		ldr	r0, [r3, #8]
+  46:Core/Src/main.c **** }
+ 167              		.loc 1 46 1 view .LVU42
+ 168 0004 00F00100 		and	r0, r0, #1
+ 169 0008 7047     		bx	lr
+ 170              	.L10:
+ 171 000a 00BF     		.align	2
+ 172              	.L9:
+ 173 000c 00080140 		.word	1073809408
+ 174              		.cfi_endproc
+ 175              	.LFE67:
+ 177              		.section	.text.Button_Read_Debounced,"ax",%progbits
+ 178              		.align	1
+ 179              		.global	Button_Read_Debounced
+ 180              		.syntax unified
+ 181              		.thumb
+ 182              		.thumb_func
+ 184              	Button_Read_Debounced:
+ 185              	.LFB68:
+  47:Core/Src/main.c **** 
+  48:Core/Src/main.c **** /**
+  49:Core/Src/main.c ****  * @brief  Чтение кнопки с антидребезгом
+  50:Core/Src/main.c ****  */
+ARM GAS  /tmp/cc7wJfbo.s 			page 5
+
+
+  51:Core/Src/main.c **** uint8_t Button_Read_Debounced(void)
+  52:Core/Src/main.c **** {
+ 186              		.loc 1 52 1 is_stmt 1 view -0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190 0000 08B5     		push	{r3, lr}
+ 191              	.LCFI2:
+ 192              		.cfi_def_cfa_offset 8
+ 193              		.cfi_offset 3, -8
+ 194              		.cfi_offset 14, -4
+  53:Core/Src/main.c ****     static uint8_t last_state = 1;
+ 195              		.loc 1 53 5 view .LVU44
+  54:Core/Src/main.c ****     uint8_t current = Button_Read();
+ 196              		.loc 1 54 5 view .LVU45
+ 197              		.loc 1 54 23 is_stmt 0 view .LVU46
+ 198 0002 FFF7FEFF 		bl	Button_Read
+ 199              	.LVL1:
+  55:Core/Src/main.c ****     
+  56:Core/Src/main.c ****     if (current != last_state) {
+ 200              		.loc 1 56 5 is_stmt 1 view .LVU47
+ 201              		.loc 1 56 17 is_stmt 0 view .LVU48
+ 202 0006 074B     		ldr	r3, .L15
+ 203 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 204              		.loc 1 56 8 view .LVU49
+ 205 000a 8342     		cmp	r3, r0
+ 206 000c 00D1     		bne	.L14
+ 207              	.L12:
+  57:Core/Src/main.c ****         Delay(50000);  /* ~50 мс */
+  58:Core/Src/main.c ****         current = Button_Read();
+  59:Core/Src/main.c ****         last_state = current;
+  60:Core/Src/main.c ****     }
+  61:Core/Src/main.c ****     return current;
+ 208              		.loc 1 61 5 is_stmt 1 view .LVU50
+  62:Core/Src/main.c **** }
+ 209              		.loc 1 62 1 is_stmt 0 view .LVU51
+ 210 000e 08BD     		pop	{r3, pc}
+ 211              	.L14:
+  57:Core/Src/main.c ****         Delay(50000);  /* ~50 мс */
+ 212              		.loc 1 57 9 is_stmt 1 view .LVU52
+ 213 0010 4CF25030 		movw	r0, #50000
+ 214              	.LVL2:
+  57:Core/Src/main.c ****         Delay(50000);  /* ~50 мс */
+ 215              		.loc 1 57 9 is_stmt 0 view .LVU53
+ 216 0014 FFF7FEFF 		bl	Delay
+ 217              	.LVL3:
+  58:Core/Src/main.c ****         last_state = current;
+ 218              		.loc 1 58 9 is_stmt 1 view .LVU54
+  58:Core/Src/main.c ****         last_state = current;
+ 219              		.loc 1 58 19 is_stmt 0 view .LVU55
+ 220 0018 FFF7FEFF 		bl	Button_Read
+ 221              	.LVL4:
+  59:Core/Src/main.c ****     }
+ 222              		.loc 1 59 9 is_stmt 1 view .LVU56
+  59:Core/Src/main.c ****     }
+ 223              		.loc 1 59 20 is_stmt 0 view .LVU57
+ 224 001c 014B     		ldr	r3, .L15
+ARM GAS  /tmp/cc7wJfbo.s 			page 6
+
+
+ 225 001e 1870     		strb	r0, [r3]
+ 226 0020 F5E7     		b	.L12
+ 227              	.L16:
+ 228 0022 00BF     		.align	2
+ 229              	.L15:
+ 230 0024 00000000 		.word	last_state.0
+ 231              		.cfi_endproc
+ 232              	.LFE68:
+ 234              		.section	.text.LED_On,"ax",%progbits
+ 235              		.align	1
+ 236              		.global	LED_On
+ 237              		.syntax unified
+ 238              		.thumb
+ 239              		.thumb_func
+ 241              	LED_On:
+ 242              	.LFB69:
+  63:Core/Src/main.c **** 
+  64:Core/Src/main.c **** void LED_On(void)  { GPIOB->BSRR = GPIO_BSRR_BS2; }
+ 243              		.loc 1 64 20 is_stmt 1 view -0
+ 244              		.cfi_startproc
+ 245              		@ args = 0, pretend = 0, frame = 0
+ 246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247              		@ link register save eliminated.
+ 248              		.loc 1 64 22 view .LVU59
+ 249              		.loc 1 64 34 is_stmt 0 view .LVU60
+ 250 0000 014B     		ldr	r3, .L18
+ 251 0002 0422     		movs	r2, #4
+ 252 0004 1A61     		str	r2, [r3, #16]
+ 253              		.loc 1 64 51 view .LVU61
+ 254 0006 7047     		bx	lr
+ 255              	.L19:
+ 256              		.align	2
+ 257              	.L18:
+ 258 0008 000C0140 		.word	1073810432
+ 259              		.cfi_endproc
+ 260              	.LFE69:
+ 262              		.section	.text.LED_Off,"ax",%progbits
+ 263              		.align	1
+ 264              		.global	LED_Off
+ 265              		.syntax unified
+ 266              		.thumb
+ 267              		.thumb_func
+ 269              	LED_Off:
+ 270              	.LFB70:
+  65:Core/Src/main.c **** void LED_Off(void) { GPIOB->BSRR = GPIO_BSRR_BR2; }
+ 271              		.loc 1 65 20 is_stmt 1 view -0
+ 272              		.cfi_startproc
+ 273              		@ args = 0, pretend = 0, frame = 0
+ 274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 275              		@ link register save eliminated.
+ 276              		.loc 1 65 22 view .LVU63
+ 277              		.loc 1 65 34 is_stmt 0 view .LVU64
+ 278 0000 024B     		ldr	r3, .L21
+ 279 0002 4FF48022 		mov	r2, #262144
+ 280 0006 1A61     		str	r2, [r3, #16]
+ 281              		.loc 1 65 51 view .LVU65
+ 282 0008 7047     		bx	lr
+ARM GAS  /tmp/cc7wJfbo.s 			page 7
+
+
+ 283              	.L22:
+ 284 000a 00BF     		.align	2
+ 285              	.L21:
+ 286 000c 000C0140 		.word	1073810432
+ 287              		.cfi_endproc
+ 288              	.LFE70:
+ 290              		.section	.text.LED_Toggle,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	LED_Toggle
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 297              	LED_Toggle:
+ 298              	.LFB71:
+  66:Core/Src/main.c **** void LED_Toggle(void) { GPIOB->ODR ^= GPIO_ODR_ODR2; }
+ 299              		.loc 1 66 23 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		@ link register save eliminated.
+ 304              		.loc 1 66 25 view .LVU67
+ 305              		.loc 1 66 30 is_stmt 0 view .LVU68
+ 306 0000 024A     		ldr	r2, .L24
+ 307 0002 D368     		ldr	r3, [r2, #12]
+ 308              		.loc 1 66 36 view .LVU69
+ 309 0004 83F00403 		eor	r3, r3, #4
+ 310 0008 D360     		str	r3, [r2, #12]
+ 311              		.loc 1 66 54 view .LVU70
+ 312 000a 7047     		bx	lr
+ 313              	.L25:
+ 314              		.align	2
+ 315              	.L24:
+ 316 000c 000C0140 		.word	1073810432
+ 317              		.cfi_endproc
+ 318              	.LFE71:
+ 320              		.section	.text.main,"ax",%progbits
+ 321              		.align	1
+ 322              		.global	main
+ 323              		.syntax unified
+ 324              		.thumb
+ 325              		.thumb_func
+ 327              	main:
+ 328              	.LFB72:
+  67:Core/Src/main.c **** 
+  68:Core/Src/main.c **** int main(void)
+  69:Core/Src/main.c **** {
+ 329              		.loc 1 69 1 is_stmt 1 view -0
+ 330              		.cfi_startproc
+ 331              		@ args = 0, pretend = 0, frame = 8
+ 332              		@ frame_needed = 0, uses_anonymous_args = 0
+ 333 0000 00B5     		push	{lr}
+ 334              	.LCFI3:
+ 335              		.cfi_def_cfa_offset 4
+ 336              		.cfi_offset 14, -4
+ 337 0002 83B0     		sub	sp, sp, #12
+ 338              	.LCFI4:
+ 339              		.cfi_def_cfa_offset 16
+ARM GAS  /tmp/cc7wJfbo.s 			page 8
+
+
+  70:Core/Src/main.c ****     volatile uint32_t delay = 300000;
+ 340              		.loc 1 70 5 view .LVU72
+ 341              		.loc 1 70 23 is_stmt 0 view .LVU73
+ 342 0004 084B     		ldr	r3, .L32
+ 343 0006 0193     		str	r3, [sp, #4]
+  71:Core/Src/main.c ****     uint8_t btn;
+ 344              		.loc 1 71 5 is_stmt 1 view .LVU74
+  72:Core/Src/main.c **** 
+  73:Core/Src/main.c ****     GPIO_Init();
+ 345              		.loc 1 73 5 view .LVU75
+ 346 0008 FFF7FEFF 		bl	GPIO_Init
+ 347              	.LVL5:
+  74:Core/Src/main.c ****     Delay(100000);
+ 348              		.loc 1 74 5 view .LVU76
+ 349 000c 0748     		ldr	r0, .L32+4
+ 350 000e FFF7FEFF 		bl	Delay
+ 351              	.LVL6:
+ 352 0012 01E0     		b	.L27
+ 353              	.LVL7:
+ 354              	.L31:
+  75:Core/Src/main.c **** 
+  76:Core/Src/main.c ****     while (1)
+  77:Core/Src/main.c ****     {
+  78:Core/Src/main.c ****         /* ===== ТЕСТ 1: Мигание ===== */
+  79:Core/Src/main.c ****         /*
+  80:Core/Src/main.c ****         LED_On();
+  81:Core/Src/main.c ****         Delay(delay);
+  82:Core/Src/main.c ****         LED_Off();
+  83:Core/Src/main.c ****         Delay(delay);
+  84:Core/Src/main.c ****         */
+  85:Core/Src/main.c ****         /* ===== ТЕСТ 2: LED горит при нажатой кнопке ===== */
+  86:Core/Src/main.c ****         /* Раскомментировать для проверки */
+  87:Core/Src/main.c ****         
+  88:Core/Src/main.c ****         btn = Button_Read();
+  89:Core/Src/main.c ****         if (btn != 0) {      // 0 = нажата (GND)
+  90:Core/Src/main.c ****             LED_On();
+ 355              		.loc 1 90 13 view .LVU77
+ 356 0014 FFF7FEFF 		bl	LED_On
+ 357              	.LVL8:
+ 358              	.L27:
+  76:Core/Src/main.c ****     {
+ 359              		.loc 1 76 5 view .LVU78
+  88:Core/Src/main.c ****         if (btn != 0) {      // 0 = нажата (GND)
+ 360              		.loc 1 88 9 view .LVU79
+  88:Core/Src/main.c ****         if (btn != 0) {      // 0 = нажата (GND)
+ 361              		.loc 1 88 15 is_stmt 0 view .LVU80
+ 362 0018 FFF7FEFF 		bl	Button_Read
+ 363              	.LVL9:
+  89:Core/Src/main.c ****             LED_On();
+ 364              		.loc 1 89 9 is_stmt 1 view .LVU81
+  89:Core/Src/main.c ****             LED_On();
+ 365              		.loc 1 89 12 is_stmt 0 view .LVU82
+ 366 001c 0028     		cmp	r0, #0
+ 367 001e F9D1     		bne	.L31
+  91:Core/Src/main.c ****         } else {
+  92:Core/Src/main.c ****             LED_Off();
+ 368              		.loc 1 92 13 is_stmt 1 view .LVU83
+ARM GAS  /tmp/cc7wJfbo.s 			page 9
+
+
+ 369 0020 FFF7FEFF 		bl	LED_Off
+ 370              	.LVL10:
+ 371              		.loc 1 92 13 is_stmt 0 view .LVU84
+ 372 0024 F8E7     		b	.L27
+ 373              	.L33:
+ 374 0026 00BF     		.align	2
+ 375              	.L32:
+ 376 0028 E0930400 		.word	300000
+ 377 002c A0860100 		.word	100000
+ 378              		.cfi_endproc
+ 379              	.LFE72:
+ 381              		.section	.data.last_state.0,"aw"
+ 384              	last_state.0:
+ 385 0000 01       		.byte	1
+ 386              		.text
+ 387              	.Letext0:
+ 388              		.file 2 "/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/arm-none-eabi/include/machine/_defa
+ 389              		.file 3 "/opt/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
+ 390              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/../../../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32
+ARM GAS  /tmp/cc7wJfbo.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+     /tmp/cc7wJfbo.s:19     .text.Delay:00000000 $t
+     /tmp/cc7wJfbo.s:25     .text.Delay:00000000 Delay
+     /tmp/cc7wJfbo.s:68     .text.GPIO_Init:00000000 $t
+     /tmp/cc7wJfbo.s:74     .text.GPIO_Init:00000000 GPIO_Init
+     /tmp/cc7wJfbo.s:145    .text.GPIO_Init:00000058 $d
+     /tmp/cc7wJfbo.s:150    .text.Button_Read:00000000 $t
+     /tmp/cc7wJfbo.s:156    .text.Button_Read:00000000 Button_Read
+     /tmp/cc7wJfbo.s:173    .text.Button_Read:0000000c $d
+     /tmp/cc7wJfbo.s:178    .text.Button_Read_Debounced:00000000 $t
+     /tmp/cc7wJfbo.s:184    .text.Button_Read_Debounced:00000000 Button_Read_Debounced
+     /tmp/cc7wJfbo.s:230    .text.Button_Read_Debounced:00000024 $d
+     /tmp/cc7wJfbo.s:384    .data.last_state.0:00000000 last_state.0
+     /tmp/cc7wJfbo.s:235    .text.LED_On:00000000 $t
+     /tmp/cc7wJfbo.s:241    .text.LED_On:00000000 LED_On
+     /tmp/cc7wJfbo.s:258    .text.LED_On:00000008 $d
+     /tmp/cc7wJfbo.s:263    .text.LED_Off:00000000 $t
+     /tmp/cc7wJfbo.s:269    .text.LED_Off:00000000 LED_Off
+     /tmp/cc7wJfbo.s:286    .text.LED_Off:0000000c $d
+     /tmp/cc7wJfbo.s:291    .text.LED_Toggle:00000000 $t
+     /tmp/cc7wJfbo.s:297    .text.LED_Toggle:00000000 LED_Toggle
+     /tmp/cc7wJfbo.s:316    .text.LED_Toggle:0000000c $d
+     /tmp/cc7wJfbo.s:321    .text.main:00000000 $t
+     /tmp/cc7wJfbo.s:327    .text.main:00000000 main
+     /tmp/cc7wJfbo.s:376    .text.main:00000028 $d
+
+NO UNDEFINED SYMBOLS
